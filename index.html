@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Javin Ku — Product Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== LOADING SCREEN ===== -->
+  <div id="loader" aria-hidden="true">
+    <svg id="loader-boarder" viewBox="0 0 90 58" width="90" height="58" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="38" width="74" height="7" rx="3.5" fill="#a87018"/>
+      <rect x="22" y="32" width="11" height="9" rx="2" fill="#365070"/>
+      <rect x="46" y="32" width="11" height="9" rx="2" fill="#365070"/>
+      <line x1="27" y1="32" x2="34" y2="21" stroke="#0b1929" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="52" y1="32" x2="47" y2="21" stroke="#0b1929" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="40" y1="21" x2="37" y2="9"  stroke="#0b1929" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="35" cy="5" r="6" fill="#0b1929"/>
+      <path d="M29 6 Q35 -2 41 6" fill="#0b1929"/>
+      <line x1="37" y1="13" x2="53" y2="9"  stroke="#0b1929" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="37" y1="13" x2="23" y2="17" stroke="#0b1929" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="2"  y1="44" x2="13" y2="42" stroke="#7090b0" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+      <line x1="1"  y1="36" x2="10" y2="35" stroke="#7090b0" stroke-width="1"   stroke-linecap="round" opacity="0.4"/>
+      <line x1="3"  y1="50" x2="11" y2="49" stroke="#7090b0" stroke-width="1"   stroke-linecap="round" opacity="0.3"/>
+    </svg>
+  </div>
+
+  <!-- Snow overlay -->
+  <div id="stars" aria-hidden="true"></div>
+
+  <!-- Custom snowboard cursor -->
+  <svg id="custom-cursor" aria-hidden="true" viewBox="0 0 28 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="1" y="2.5" width="26" height="5" rx="2.5" fill="#ffffff" stroke="#a87018" stroke-width="1.2"/>
+    <path d="M1 5 Q0 2.5 2 2" stroke="#a87018" stroke-width="1" fill="none" stroke-linecap="round"/>
+    <path d="M27 5 Q28 2.5 26 2" stroke="#a87018" stroke-width="1" fill="none" stroke-linecap="round"/>
+    <rect x="7" y="3.5" width="3.5" height="3" rx="0.8" fill="none" stroke="#a87018" stroke-width="0.9"/>
+    <rect x="17.5" y="3.5" width="3.5" height="3" rx="0.8" fill="none" stroke="#a87018" stroke-width="0.9"/>
+  </svg>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar__photo-wrap" id="photoWrap">
+        <img src="assets/images/Headshot.jpeg" alt="Javin Ku" style="object-position: center 15%;" onerror="document.getElementById('photoWrap').classList.add('photo-empty'); this.style.display='none';" />
+      </div>
+      <h1 class="sidebar__name">Javin Ku</h1>
+      <p class="sidebar__role">Product Manager</p>
+      <p class="sidebar__tagline">welcome to my snowpark!</p>
+
+      <!-- Speedometer toggle -->
+      <div class="toggle-widget">
+        <span class="toggle-widget__label">Speedometer</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="speedToggle" checked />
+          <span class="toggle-track"></span>
+        </label>
+      </div>
+
+      <!-- Speed widget -->
+      <div class="speed-widget">
+        <p class="speed-widget__title">Snowboard Speed</p>
+        <svg class="speed-widget__arc-svg" viewBox="0 0 80 46" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 42 A32 32 0 0 1 72 42" fill="none" stroke="#dce9fa" stroke-width="5" stroke-linecap="round"/>
+          <path id="speedArc" d="M8 42 A32 32 0 0 1 72 42" fill="none" stroke="#a87018" stroke-width="5" stroke-linecap="round" stroke-dasharray="0 101"/>
+        </svg>
+        <div class="speed-widget__readout">
+          <span class="speed-widget__num" id="speedVal">0</span>
+          <span class="speed-widget__unit">MPH</span>
+        </div>
+      </div>
+
+      <div class="sidebar__rule"></div>
+
+      <!-- Contact buttons -->
+      <div class="sidebar__btns">
+        <a href="mailto:javinku@berkeley.edu" class="sidebar-btn">Email</a>
+        <a href="https://www.linkedin.com/in/javin-ku-059590299/" class="sidebar-btn" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+      <nav class="tab-nav">
+        <button class="tab-btn active" data-tab="projects">Projects</button>
+        <button class="tab-btn" data-tab="experience">Experience</button>
+        <button class="tab-btn" data-tab="fun">Fun</button>
+        <button class="tab-btn" data-tab="about">About Me</button>
+      </nav>
+
+      <div class="tab-panels" id="tabPanels">
+
+        <!-- PROJECTS -->
+        <section class="tab-panel active" id="tab-projects">
+          <h2 class="panel-section-title anim-item">Personal Projects</h2>
+
+          <!-- ── Full Stack ── -->
+          <div class="project-sub anim-item"><span class="project-sub__label">Full Stack</span></div>
+
+          <article class="project-featured anim-item">
+            <div class="project-featured__image" data-label="CAMBER">
+              <img src="assets/images/CAMBER PORTFOLIO.png" alt="CAMBER" onerror="this.parentElement.classList.add('img-empty')" />
+            </div>
+            <div class="project-featured__content">
+              <span class="project-num">01</span>
+              <h3 class="project-featured__title" style="font-size: 1.25rem;">CAMBER</h3>
+              <div class="project-featured__body">
+                <div class="project-block">
+                  <h4 class="project-block__heading">Product Goal</h4>
+                  <p>Helps hardware teams instantly see which parts and suppliers are risky, so they can quickly swap them out before production breaks.</p>
+                </div>
+                <div class="project-block">
+                  <h4 class="project-block__heading">Product Decisions</h4>
+                  <p>The app shows a simple health score and expandable details so you know exactly what's wrong. Claude AI recommends specific part replacements.</p>
+                  <p>The fullstack design—React frontend, Node.js backend, Claude API—makes analysis instant and accurate.</p>
+                </div>
+              </div>
+              <div class="project-actions">
+                <a href="https://camber-new.vercel.app/" class="project-btn" target="_blank" rel="noopener">Visit Site</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Front End ── -->
+          <div class="project-sub anim-item"><span class="project-sub__label">Front End</span></div>
+
+          <div class="projects-row">
+            <article class="project-card anim-item">
+              <div class="project-card__image" data-label="Hegemon">
+                <img src="assets/images/Hegemon1.png" alt="Hegemon" onerror="this.parentElement.classList.add('img-empty')" />
+              </div>
+              <div class="project-card__content">
+                <span class="project-num">02</span>
+                <h3 class="project-card__title">Hegemon</h3>
+                <p class="project-card__desc">A browser-based geopolitical strategy game where you navigate five rounds of high-stakes diplomacy.</p>
+                <div class="project-actions">
+                  <a href="https://playhegemon.netlify.app/" class="project-btn" target="_blank" rel="noopener">Visit Site</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card anim-item">
+              <div class="project-card__image" data-label="BoardBuddy">
+                <img src="assets/images/BoardBUDDY.png" alt="BoardBuddy" onerror="this.parentElement.classList.add('img-empty')" />
+              </div>
+              <div class="project-card__content">
+                <span class="project-num">03</span>
+                <h3 class="project-card__title">BoardBuddy</h3>
+                <p class="project-card__desc">Optimizing snowboard performance through personalized stance tracking, ensuring precision for every excursion.</p>
+                <div class="project-actions">
+                  <a href="https://urboardbuddy.netlify.app/" class="project-btn" target="_blank" rel="noopener">Visit Site</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- EXPERIENCE — TRAIL MAP -->
+        <section class="tab-panel" id="tab-experience">
+          <h2 class="panel-section-title anim-item">Experience</h2>
+
+          <div class="trail-map anim-item">
+
+            <!-- Legend: Green=Leadership, Blue=Internships, Black=Full-time -->
+            <div class="trail-legend">
+              <div class="trail-legend-item">
+                <svg viewBox="0 0 18 18" width="13" height="13"><circle cx="9" cy="9" r="7.5" fill="#2e9142" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"/></svg>
+                Leadership
+              </div>
+              <div class="trail-legend-item">
+                <svg viewBox="0 0 18 18" width="13" height="13"><rect x="1.5" y="1.5" width="15" height="15" rx="2" fill="#1a5fbe" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"/></svg>
+                Internships
+              </div>
+              <div class="trail-legend-item">
+                <svg viewBox="0 0 18 18" width="13" height="13"><polygon points="9,1.5 16.5,9 9,16.5 1.5,9" fill="#1a2a3a" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"/></svg>
+                Full-time (working on it..)
+              </div>
+            </div>
+
+            <!-- Stop 1: Zipline — Blue internship -->
+            <div class="trail-item">
+              <div class="trail-item__track">
+                <svg class="trail-item__badge" viewBox="0 0 22 22" width="22" height="22"><rect x="2" y="2" width="18" height="18" rx="2.5" fill="#1a5fbe" stroke="white" stroke-width="1.8"/></svg>
+                <div class="trail-item__stem" style="background:#1a5fbe;"></div>
+              </div>
+              <div class="trail-item__body">
+                <div class="trail-item__header">
+                  <div class="trail-item__meta">
+                    <p class="trail-item__role">Product Manager Intern</p>
+                    <p class="trail-item__company">Zipline</p>
+                  </div>
+                  <div class="trail-item__right">
+                    <p class="trail-item__date">Incoming Summer 2026</p>
+                    <span class="trail-item__chevron">▾</span>
+                  </div>
+                </div>
+                <div class="trail-item__desc">
+                  working on drones. not pewpew drones. drones that deliver medical supplies.
+                </div>
+              </div>
+            </div>
+
+            <!-- Stop 2: KCI — Blue internship, no stem -->
+            <div class="trail-item">
+              <div class="trail-item__track">
+                <svg class="trail-item__badge" viewBox="0 0 22 22" width="22" height="22"><rect x="2" y="2" width="18" height="18" rx="2.5" fill="#1a5fbe" stroke="white" stroke-width="1.8"/></svg>
+              </div>
+              <div class="trail-item__body">
+                <div class="trail-item__header">
+                  <div class="trail-item__meta">
+                    <p class="trail-item__role">Product Manager Intern</p>
+                    <p class="trail-item__company">Krause Center for Innovation</p>
+                  </div>
+                  <div class="trail-item__right">
+                    <p class="trail-item__date">May – Jun 2025</p>
+                    <span class="trail-item__chevron">▾</span>
+                  </div>
+                </div>
+                <div class="trail-item__desc">
+                  made money tracker that is automated + integrated w netsuite.
+                </div>
+              </div>
+            </div>
+
+            <!-- Section break -->
+            <div class="trail-break">
+              <span class="trail-break__label">Student Leadership</span>
+            </div>
+
+            <!-- Stop 3: imagiCal — Green leadership -->
+            <div class="trail-item">
+              <div class="trail-item__track">
+                <svg class="trail-item__badge" viewBox="0 0 22 22" width="22" height="22"><circle cx="11" cy="11" r="10" fill="#2e9142" stroke="white" stroke-width="1.8"/></svg>
+                <div class="trail-item__stem" style="background:#2e9142;"></div>
+              </div>
+              <div class="trail-item__body">
+                <div class="trail-item__header">
+                  <div class="trail-item__meta">
+                    <p class="trail-item__role">VP of Projects</p>
+                    <p class="trail-item__company">imagiCal Consulting</p>
+                  </div>
+                  <div class="trail-item__right">
+                    <p class="trail-item__date">Apr 2026 – Present</p>
+                    <span class="trail-item__chevron">▾</span>
+                  </div>
+                </div>
+                <div class="trail-item__desc">
+                  sourcing + managing consulting projects for clients.
+                </div>
+              </div>
+            </div>
+
+            <!-- Stop 4: PBL — Green leadership, last -->
+            <div class="trail-item trail-item--last">
+              <div class="trail-item__track">
+                <svg class="trail-item__badge" viewBox="0 0 22 22" width="22" height="22"><circle cx="11" cy="11" r="10" fill="#2e9142" stroke="white" stroke-width="1.8"/></svg>
+              </div>
+              <div class="trail-item__body">
+                <div class="trail-item__header">
+                  <div class="trail-item__meta">
+                    <p class="trail-item__role">President</p>
+                    <p class="trail-item__company">Phi Beta Lambda</p>
+                  </div>
+                  <div class="trail-item__right">
+                    <p class="trail-item__date">Jun 2024 – Jun 2025</p>
+                    <span class="trail-item__chevron">▾</span>
+                  </div>
+                </div>
+                <div class="trail-item__desc">
+                  led the club = rev grow from $4,000 to $60,474 over 10 months.
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /trail-map -->
+
+          <div class="sub-header anim-item">
+            <span class="sub-label">Tools</span>
+          </div>
+          <div class="tools-row anim-item">
+            <span class="tool-tag">Asana</span>
+            <span class="tool-tag">Claude</span>
+            <span class="tool-tag">Codex</span>
+<span class="tool-tag">Jira</span>
+            <span class="tool-tag">Microsoft Suite</span>
+            <span class="tool-tag">PowerBI</span>
+            <span class="tool-tag">Tableau</span>
+            <span class="tool-tag">Trello</span>
+            <span class="tool-tag">VSCode</span>
+          </div>
+        </section>
+
+        <!-- FUN -->
+        <section class="tab-panel" id="tab-fun">
+          <h2 class="panel-section-title anim-item">Competitions that I did for fun.</h2>
+
+          <div class="misc-list">
+            <div class="misc-item anim-item">
+              <span class="misc-item__num">❄</span>
+              <div class="misc-item__body">
+                <div class="misc-item__header">
+                  <p class="misc-item__text">1st Place — AT&amp;T Product &amp; Business Management Case Competition (National)</p>
+                </div>
+                <button class="deck-btn" data-url="#">View Pitch Deck &rarr;</button>
+                <div class="misc-item__desc">Designed a product infrastructure mockup aimed at enabling and optimizing hybrid work environments.<br><br><span class="misc-item__date">June 2025</span></div>
+              </div>
+            </div>
+            <div class="misc-item anim-item">
+              <span class="misc-item__num">❄</span>
+              <div class="misc-item__body">
+                <div class="misc-item__header">
+                  <p class="misc-item__text">2nd Place — AT&amp;T Ethics Management Case Competition (National)</p>
+                </div>
+                <button class="deck-btn" data-url="#">View Pitch Deck &rarr;</button>
+                <div class="misc-item__desc">Developed an ethical and infrastructure framework for Mobile Device Management (MDM) and Bring Your Own Device (BYOD) policies.<br><br><span class="misc-item__date">June 2025</span></div>
+              </div>
+            </div>
+            <div class="misc-item anim-item">
+              <span class="misc-item__num">❄</span>
+              <div class="misc-item__body">
+                <div class="misc-item__header">
+                  <p class="misc-item__text">2nd Place — KPMG Sustainable Frontiers Challenge</p>
+                </div>
+                <button class="deck-btn" data-url="https://drive.google.com/file/d/18pTDwWNP8sVKQV3CprdHGDUuT5JF4opj/view?usp=sharing">View Pitch Deck &rarr;</button>
+                <div class="misc-item__desc">Pitched an AI strategy optimizing ESG operations to drive LuminaCorp's sustainable global expansion.<br><br><span class="misc-item__date">May 2026</span></div>
+              </div>
+            </div>
+            <div class="misc-item anim-item">
+              <span class="misc-item__num">❄</span>
+              <div class="misc-item__body">
+                <div class="misc-item__header">
+                  <p class="misc-item__text">Finalist — Fidelity &times; Irvine Trading Group Pitch Competition</p>
+                </div>
+                <button class="deck-btn" data-url="https://drive.google.com/file/d/14p5JGJEUySE6VQOtHmTTqAHl8UvKYKeG/view?usp=sharing">View Pitch Deck &rarr;</button>
+                <div class="misc-item__desc">Pitched Synopsys (SNPS) with a $573.11 price target and 17.2% upside, driven by a core thesis focused on custom silicon-to-system integration and the Ansys acquisition.<br><br><span class="misc-item__date">May 2026</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABOUT ME -->
+        <section class="tab-panel" id="tab-about">
+          <h2 class="panel-section-title anim-item">About Me</h2>
+
+          <div class="hobby-row anim-item">
+            <div class="hobby-box">
+              <img src="assets/images/Snowboarding.jpeg" alt="Snowboarding" />
+            </div>
+            <div class="hobby-box">
+              <img src="assets/images/Friends.jpeg" alt="Friends" />
+            </div>
+            <div class="hobby-box">
+              <img src="assets/images/Rockclimb.png" alt="Rock climbing" />
+            </div>
+          </div>
+          <p class="hobby-caption anim-item">love my homies, snowboarding, skating, bouldering and watching all sports (SF Giants, Tottenham, NBA - Neutral)</p>
+
+          <div class="about-footer-grid anim-item">
+            <div class="about-footer-col">
+              <h4 class="about-footer-heading">Watch Fixations</h4>
+              <div class="about-footer-item">
+                <span class="about-footer-label">Current</span>
+                <a href="https://www.fpjourne.com/fr/collection/collection-classique/chronometre-resonance-0" class="sidebar-link" target="_blank" rel="noopener">F.P. Journe Chronomètre à Résonance</a>
+              </div>
+              <div class="about-footer-item">
+                <span class="about-footer-label">All-Time</span>
+                <a href="https://www.jaeger-lecoultre.com/us-en/news/watchmaking/duometre-heliotourbillon-perpetual" class="sidebar-link" target="_blank" rel="noopener">Jaeger-LeCoultre Duometre Heliotourbillon Perpetual</a>
+              </div>
+            </div>
+
+            <div class="about-footer-col">
+              <h4 class="about-footer-heading">Current Reads</h4>
+              <div class="about-footer-item">
+                <span class="about-footer-label">Recreational</span>
+                <a href="https://www.amazon.com/Red-Rising-Pierce-Brown/dp/034553980X" class="sidebar-link" target="_blank" rel="noopener"><em>Red Rising</em> — Pierce Brown</a>
+              </div>
+              <div class="about-footer-item">
+                <span class="about-footer-label">Development</span>
+                <a href="https://www.amazon.com/War-Carl-von-Clausewitz/dp/1469947021" class="sidebar-link" target="_blank" rel="noopener"><em>On War</em> — Carl Von Clausewitz</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /tab-panels -->
+    </div><!-- /main -->
+  </div><!-- /layout -->
+
+  <!-- ===== PASSCODE MODAL ===== -->
+  <div id="deck-modal" aria-modal="true" role="dialog" aria-label="Deck passcode">
+    <div class="deck-modal__card">
+      <div class="deck-modal__lock">🔒</div>
+      <p class="deck-modal__hint">Enter passcode to access this deck</p>
+      <input type="password" id="deck-passcode-input" class="deck-modal__input" placeholder="Passcode" autocomplete="off" />
+      <button id="deck-unlock-btn" class="deck-modal__btn">Unlock</button>
+      <p id="deck-modal-error" class="deck-modal__error">Incorrect passcode — try again</p>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

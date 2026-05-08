@@ -210,6 +210,24 @@ function setupAnimations(panel) {
   items.forEach((el) => activeObserver.observe(el));
 }
 
+// ===== MOBILE TAP-TO-REVEAL (project cards) =====
+(function () {
+  document.querySelectorAll('.proj-card').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      if (window.innerWidth >= 768) return;
+      if (e.target.closest('.proj-card__link') || e.target.closest('.proj-card__name')) return;
+      const isOpen = card.classList.contains('touched');
+      document.querySelectorAll('.proj-card').forEach((c) => c.classList.remove('touched'));
+      if (!isOpen) card.classList.add('touched');
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.proj-card')) {
+      document.querySelectorAll('.proj-card').forEach((c) => c.classList.remove('touched'));
+    }
+  });
+})();
+
 // ===== TRAIL ITEM DROPDOWNS =====
 document.querySelectorAll('.trail-item__header').forEach((header) => {
   header.addEventListener('click', () => {
